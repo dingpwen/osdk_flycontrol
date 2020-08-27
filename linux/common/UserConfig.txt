@@ -1,0 +1,5 @@
+app_id : 1093057
+app_key : f43aba246152f5e27015c71469a160d3ec7303a880ef7fc6d83bc10d93051eb1
+device : /dev/ttyUSB0
+baudrate : 230400
+server_url : ws://124.70.140.183:8000/socket?type=1&appId=test

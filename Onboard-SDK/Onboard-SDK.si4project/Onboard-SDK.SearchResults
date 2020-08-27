@@ -1,0 +1,21 @@
+---- gps Matches (22 in 9 files) ----
+DataBroadcast::getGPSInfo in dji_broadcast.cpp (osdk-core\api\src) :     data = gps;
+DataBroadcast::unpackData in dji_broadcast.cpp (osdk-core\api\src) :   unpackOne(FLAG_GPSINFO     ,&gps       ,pdata,sizeof(gps       ));
+DJI::OSDK::DataBroadcast in dji_broadcast.hpp (osdk-core\api\inc) :   Telemetry::GPSInfo             gps         ;
+DJI::OSDK::ErrorCode::CommonACK in dji_error.hpp (osdk-core\api\inc) :     /*! The aircraft is in Novice Mode without gps. */
+DJI::OSDK::FlightAssistant in dji_flight_assistant_module.hpp (osdk-core\modules\inc\flight) :    *  2 Use the type DJI_HOMEPOINT_AIRCRAFT_LOACTON, but aircraft's gps level
+DJI::OSDK::FlightAssistant in dji_flight_assistant_module.hpp (osdk-core\modules\inc\flight) :    *  2 Use the type DJI_HOMEPOINT_AIRCRAFT_LOACTON, but aircraft's gps level
+DJI::OSDK::FlightController in dji_flight_controller.hpp (osdk-core\api\inc) :    *  1. Aircraft's gps level can't reach the condition of recording home
+DJI::OSDK::FlightController in dji_flight_controller.hpp (osdk-core\api\inc) :    *  1. Aircraft's gps level can't reach the condition of recording home
+dji_hotpoint.cpp (osdk-core\api\src) line 366 : HotpointMission::setHotPoint(Telemetry::GlobalPosition gps)
+HotpointMission::setHotPoint in dji_hotpoint.cpp (osdk-core\api\src) :   hotPointData.longitude = gps.longitude;
+HotpointMission::setHotPoint in dji_hotpoint.cpp (osdk-core\api\src) :   hotPointData.latitude  = gps.latitude;
+HotpointMission::setHotPoint in dji_hotpoint.cpp (osdk-core\api\src) :   hotPointData.height    = gps.altitude;
+DJI::OSDK::HotpointMission in dji_hotpoint.hpp (osdk-core\api\inc) :    *  @param gps gps
+DJI::OSDK::HotpointMission in dji_hotpoint.hpp (osdk-core\api\inc) :   void setHotPoint(Telemetry::GlobalPosition gps);
+DJI::OSDK::Telemetry::Velocity in dji_telemetry.hpp (osdk-core\api\inc) :   /*! scale from 0 - 5 signifying gps signal strength <br>
+DJI::OSDK::Telemetry::GlobalPosition in dji_telemetry.hpp (osdk-core\api\inc) :   uint8_t   health;    /*!< scale from 0 - 5 signifying gps signal strength <br>
+DJI::OSDK::Telemetry in dji_telemetry.hpp (osdk-core\api\inc) :  * @note fusion data from GPS and IMU, return in gps format
+DJI::OSDK::Telemetry::LegacyVelocity in dji_telemetry.hpp (osdk-core\api\inc) :   /*! scale from 0 - 5 signifying gps signal strength <br>
+Vehicle::setSimulationOn::SimulationData in dji_vehicle.cpp (osdk-core\api\src) :     uint8_t	gps;
+Vehicle::setSimulationOn in dji_vehicle.cpp (osdk-core\api\src) :   data.gps = 20;
