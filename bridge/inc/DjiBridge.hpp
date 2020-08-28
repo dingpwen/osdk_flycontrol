@@ -10,6 +10,8 @@
 #include <dji_vehicle.hpp>
 #include <iostream>
 #include "DjiCameraStream.hpp"
+#include "DjiDataManager.hpp"
+#include "DjiMissionManager.hpp"
 
 class WorkerWebSocket;
 
@@ -19,10 +21,14 @@ private:
 	bool is_working;
 	WorkerWebSocket* worker;
 	DjiCameraStream* camera_stream;
+	DjiDataManager* data_manager;
+	DjiMissionManager* mossion_manager;
 
 public:
 	DjiBridge(const Vehicle* vehicle):vehicle(vehicle), is_working(false), worker(nullptr){
 		camera_stream = new DjiCameraStream(vehicle);
+		data_manager = new DjiDataManager(vehicle);
+		mossion_manager = new DjiMissionManager(vehicle);
 	}
 	~DjiBridge();
 

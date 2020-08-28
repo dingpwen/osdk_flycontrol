@@ -5,20 +5,16 @@
 #ifndef DJI_CAMERA_STREAM_HPP
 #define DJI_CAMERA_STREAM_HPP
 
-#include <dji_vehicle.hpp>
+#include <DjiBase.hpp>
 #include <dji_camera_image.hpp>
-class WorkerWebSocket;
 
-class DjiCameraStream {
+class DjiCameraStream: public DjiBase{
 private:
-	const Vehicle* vehicle;
-	WorkerWebSocket* worker;
 	bool is_stream_starting;
 public:
-	DjiCameraStream(const Vehicle* vehicle) :vehicle(vehicle), worker(nullptr), is_stream_starting(false){}
-	DjiCameraStream(const Vehicle* vehicle, WorkerWebSocket* worker) :vehicle(vehicle), worker(worker), is_stream_starting(false) {}
+	DjiCameraStream(const Vehicle* vehicle) :DjiBase(vehicle, nullptr), is_stream_starting(false){}
+	DjiCameraStream(const Vehicle* vehicle, WorkerWebSocket* worker) :DjiBase(vehicle, worker), is_stream_starting(false) {}
 
-	void set_worker(WorkerWebSocket* worker);
 	void start_camera_stream();
 	void stop_camera_stream();
 private:

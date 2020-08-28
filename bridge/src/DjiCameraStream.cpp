@@ -1,11 +1,6 @@
 #include "DjiCameraStream.hpp"
 #include "WorkerWebSocket.hpp"
 
-void DjiCameraStream::set_worker(WorkerWebSocket* worker) {
-	this->worker = worker;
-}
-
-
 void DjiCameraStream::start_camera_stream() {
 	if (vehicle != nullptr && !is_stream_starting) {
 		char fpvName[] = "FPV_CAM";
@@ -25,6 +20,7 @@ void DjiCameraStream::stop_camera_stream() {
 void DjiCameraStream::stream_data_callback(CameraRGBImage pImg, void* userData) {
 	if (worker != nullptr) {
 		std::vector<uint8_t> zip_data;
+		zip_data.reserve(10000);
 		get_zip_data(pImg, zip_data);
 		int len = zip_data.size();
 		uint8_t data[len];
@@ -35,12 +31,13 @@ void DjiCameraStream::stream_data_callback(CameraRGBImage pImg, void* userData) 
 		if (ec.value() != 0) {
 			std::cout << "send img data error with code =" << ec.value() << std::endl;
 		}
+		zip_data.clear();
 	}
 }
 
 void DjiCameraStream::get_zip_data(const CameraRGBImage &pImg, std::vector<uint8_t> &zip_data) {
 	uint8_t data[pImg.rawData.size()];
 	std::copy(pImg.rawData.begin(), pImg.rawData.end(), data);
-	
+	//do zip data here
 	std::copy(data, data + sizeof(data)/sizeof(data[0]), zip_data.begin());
 }

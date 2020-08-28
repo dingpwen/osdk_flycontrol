@@ -14,12 +14,16 @@ void DjiBridge::start_worker(const std::string& url) {
 	}
 	worker->start_connect();
 	camera_stream->set_worker(worker);
+	data_manager->set_worker(worker);
+	data_manager->start_worker();
 }
 
 void DjiBridge::stop_worker() {
 	is_working = false;
 	camera_stream->stop_camera_stream();
 	camera_stream->set_worker(nullptr);
+	data_manager->set_worker(nullptr);
+	data_manager->stop_worker();
 }
 
 DjiBridge::~DjiBridge() {
@@ -30,6 +34,10 @@ DjiBridge::~DjiBridge() {
 	if (camera_stream != nullptr) {
 		delete camera_stream;
 		camera_stream = nullptr;
+	}
+	if (data_manager != nullptr) {
+		delete data_manager;
+		data_manager = nullptr;
 	}
 }
 
@@ -43,8 +51,10 @@ void DjiBridge::start_action(const std::string& message) {
 		camera_stream->stop_camera_stream();
 		break;
 	case dji_mission:
+		mossion_manager->start_mission(message);
 		break;
 	case dji_data_gps:
+		data_manager->get_gps_data();
 		break;
 	case dji_data_battery:
 		break;

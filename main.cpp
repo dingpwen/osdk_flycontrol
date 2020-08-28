@@ -8,11 +8,13 @@ int main(int argc, char *argv[]) {
     // Setup OSDK.
     LinuxSetup linuxEnvironment(argc, argv);
     Vehicle* vehicle = linuxEnvironment.getVehicle();
-    const char* acm_dev = linuxEnvironment.getEnvironment()->getDeviceAcm().c_str();
-    vehicle->advancedSensing->setAcmDevicePath(acm_dev);
     if (vehicle == NULL) {
         std::cout << "Vehicle not initialized, exiting.\n";
         //return -1;
+    }
+    else {
+        const char* acm_dev = linuxEnvironment.getEnvironment()->getDeviceAcm().c_str();
+        vehicle->advancedSensing->setAcmDevicePath(acm_dev);
     }
 
     DjiBridge bridge(vehicle);
