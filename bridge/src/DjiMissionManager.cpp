@@ -1,5 +1,6 @@
 #include "DjiMissionManager.hpp"
 #include "osdkosal_linux.h"
+#include <iostream>
 
 using namespace DJI::OSDK;
 using namespace DJI::OSDK::Telemetry;
